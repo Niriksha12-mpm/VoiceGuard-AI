@@ -1,0 +1,7 @@
+Metric,Model A (Pretrained),Model B (Baseline),Model B (Improved),Delta (Imp - Base)
+Accuracy (%),46.15,53.85,92.31,+38.46 pp
+Precision (%),0.0,53.85,87.5,33.65 pp
+Recall (%),0.0,100.0,100.0,0.0 pp
+F1-Score (%),0.0,70.0,93.33,23.33 pp
+ROC-AUC,0.119,0.9762,0.9524,-0.0238
+FPR (%),0.0,100.0,16.67,-83.33 pp

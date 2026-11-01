@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-10-14",
+  "initial_sample_count": 27,
+  "clean_sample_count": 18,
+  "removed_count": 9,
+  "exact_duplicates": {
+    "group_count": 2,
+    "groups": [
+      {
+        "sha256": "6563390fa42121eeeab15f49fa91fd26afe000022bfdaaa882f06224ad549599",
+        "count": 2,
+        "primary": "wavefake_real_lj001_0002.wav",
+        "duplicates": [
+          "coqui_real_lj001_0002.wav"
+        ],
+        "paths": [
+          "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voice-impersonation-detection\\data\\raw\\real\\wavefake_real_lj001_0002.wav",
+          "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voice-impersonation-detection\\data\\raw\\real\\coqui_real_lj001_0002.wav"
+        ]
+      },
+      {
+        "sha256": "ad97822fa512b4897a01557423ffff7cc1fc763c9b9d5d502a5a1bc566f7440b",
+        "count": 2,
+        "primary": "wavefake_real_lj001_0003.wav",
+        "duplicates": [
+          "coqui_real_lj001_0003.wav"
+        ],
+        "paths": [
+          "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voice-impersonation-detection\\data\\raw\\real\\wavefake_real_lj001_0003.wav",
+          "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voice-impersonation-detection\\data\\raw\\real\\coqui_real_lj001_0003.wav"
+        ]
+      }
+    ]
+  },
+  "near_duplicates_reencoded": {
+    "pair_count": 7,
+    "pairs": [
+      {
+        "sample_a": "wavefake_real_lj001_0001.wav",
+        "source_a": "WaveFake (LJSpeech Bonafide)",
+        "format_a": "wav",
+        "sample_b": "wavefake_real_lj001_0003.wav",
+        "source_b": "WaveFake (LJSpeech Bonafide)",
+        "format_b": "wav",
+        "acoustic_similarity": 0.99906,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained wavefake_real_lj001_0001.wav, flagged wavefake_real_lj001_0003.wav as redundant copy"
+      },
+      {
+        "sample_a": "wavefake_real_lj001_0001.wav",
+        "source_a": "WaveFake (LJSpeech Bonafide)",
+        "format_a": "wav",
+        "sample_b": "coqui_real_lj001_0001.flac",
+        "source_b": "Coqui TTS Corpus (LJSpeech)",
+        "format_b": "flac",
+        "acoustic_similarity": 1.0,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained wavefake_real_lj001_0001.wav, flagged coqui_real_lj001_0001.flac as redundant copy"
+      },
+      {
+        "sample_a": "wavefake_real_lj001_0001.wav",
+        "source_a": "WaveFake (LJSpeech Bonafide)",
+        "format_a": "wav",
+        "sample_b": "coqui_real_lj001_0001.mp3",
+        "source_b": "Coqui TTS Corpus (LJSpeech)",
+        "format_b": "mp3",
+        "acoustic_similarity": 0.99984,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained wavefake_real_lj001_0001.wav, flagged coqui_real_lj001_0001.mp3 as redundant copy"
+      },
+      {
+        "sample_a": "wavefake_real_lj001_0002.wav",
+        "source_a": "WaveFake (LJSpeech Bonafide)",
+        "format_a": "wav",
+        "sample_b": "coqui_real_lj001_0002.mp3",
+        "source_b": "Coqui TTS Corpus (LJSpeech)",
+        "format_b": "mp3",
+        "acoustic_similarity": 0.99968,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained wavefake_real_lj001_0002.wav, flagged coqui_real_lj001_0002.mp3 as redundant copy"
+      },
+      {
+        "sample_a": "garystafford_real_yt0006_part053.flac",
+        "source_a": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "format_a": "flac",
+        "sample_b": "garystafford_real_yt0006_part142.flac",
+        "source_b": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "format_b": "flac",
+        "acoustic_similarity": 0.9967,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained garystafford_real_yt0006_part053.flac, flagged garystafford_real_yt0006_part142.flac as redundant copy"
+      },
+      {
+        "sample_a": "wavefake_fake_lj001_0001_gen.wav",
+        "source_a": "WaveFake (Neural Vocoder Benchmark)",
+        "format_a": "wav",
+        "sample_b": "wavefake_fake_lj001_0003_gen.wav",
+        "source_b": "WaveFake (Neural Vocoder Benchmark)",
+        "format_b": "wav",
+        "acoustic_similarity": 0.9992,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained wavefake_fake_lj001_0001_gen.wav, flagged wavefake_fake_lj001_0003_gen.wav as redundant copy"
+      },
+      {
+        "sample_a": "garystafford_fake_el0027_part003.flac",
+        "source_a": "Gary Stafford Deepfake Dataset (ElevenLabs)",
+        "format_a": "flac",
+        "sample_b": "garystafford_fake_el0027_part004.flac",
+        "source_b": "Gary Stafford Deepfake Dataset (ElevenLabs)",
+        "format_b": "flac",
+        "acoustic_similarity": 0.99807,
+        "reason": "Identical speech recording re-encoded into different audio container/sample rate",
+        "action_taken": "Retained garystafford_fake_el0027_part003.flac, flagged garystafford_fake_el0027_part004.flac as redundant copy"
+      }
+    ]
+  },
+  "clean_distribution": {
+    "total": 18,
+    "real": 8,
+    "fake": 10
+  },
+  "retained_files": [
+    "wavefake_real_lj001_0001.wav",
+    "wavefake_real_lj001_0002.wav",
+    "wavefake_real_lj001_0004.wav",
+    "wavefake_real_lj001_0005.wav",
+    "garystafford_real_yt0001_part007.flac",
+    "garystafford_real_yt0005_part007.flac",
+    "garystafford_real_yt0006_part053.flac",
+    "garystafford_real_yt0006_part113.flac",
+    "wavefake_fake_lj001_0001_gen.wav",
+    "wavefake_fake_lj001_0002_gen.wav",
+    "wavefake_fake_lj001_0004_gen.wav",
+    "wavefake_fake_lj001_0005_gen.wav",
+    "garystafford_fake_el0027_part003.flac",
+    "garystafford_fake_el0027_part006.flac",
+    "garystafford_fake_he0006_part001.flac",
+    "garystafford_fake_sf0006_part001.flac",
+    "zo9999_fake_elevenlabs_aria.flac",
+    "zo9999_fake_elevenlabs_rachel.flac"
+  ]
+}

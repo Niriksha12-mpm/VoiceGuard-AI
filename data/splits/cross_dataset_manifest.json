@@ -1,0 +1,30 @@
+[
+  {
+    "segment_filename": "zo9999_fake_elevenlabs_aria_seg00.wav",
+    "segment_path": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voiceguard-ai\\data\\processed\\fake\\zo9999_fake_elevenlabs_aria_seg00.wav",
+    "parent_file": "zo9999_fake_elevenlabs_aria.flac",
+    "label": "FAKE",
+    "speaker_id": "ElevenLabs_Aria",
+    "dataset_source": "zo9999 Deepfake Audio Repository",
+    "algorithm": "ElevenLabs Neural Voice Cloning",
+    "segment_index": 0,
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_seconds": 3.0,
+    "samples": 48000
+  },
+  {
+    "segment_filename": "zo9999_fake_elevenlabs_rachel_seg00.wav",
+    "segment_path": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\voiceguard-ai\\data\\processed\\fake\\zo9999_fake_elevenlabs_rachel_seg00.wav",
+    "parent_file": "zo9999_fake_elevenlabs_rachel.flac",
+    "label": "FAKE",
+    "speaker_id": "ElevenLabs_Rachel",
+    "dataset_source": "zo9999 Deepfake Audio Repository",
+    "algorithm": "ElevenLabs Neural Voice Cloning",
+    "segment_index": 0,
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_seconds": 3.0,
+    "samples": 48000
+  }
+]

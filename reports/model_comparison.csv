@@ -1,0 +1,4 @@
+Model,Accuracy (%),Balanced Acc (%),95% CI Lower,95% CI Upper,Precision (%),Recall (%),F1 (%),ROC-AUC,FPR (%),FNR (%),Latency (ms),Params
+Model A (Pretrained Baseline),46.15,50.0,15.38,69.23,0.0,0.0,0.0,0.119,0.0,100.0,247.87,916897
+Model B (Colab Baseline),53.85,50.0,30.77,84.62,53.85,100.0,70.0,0.9762,100.0,0.0,55.17,3030849
+Model B (Improved Fine-Tuned),92.31,91.67,76.92,100.0,87.5,100.0,93.33,0.9524,16.67,0.0,58.6,3030849

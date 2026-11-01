@@ -1,0 +1,113 @@
+{
+  "project": "VoiceGuard AI",
+  "version": "2.0.0",
+  "generated_at": "2026-10-29",
+  "system_environment": {
+    "os": "Windows",
+    "python_version": "3.14.3",
+    "torch_version": "2.13.0+cpu",
+    "librosa_version": "0.10.2.post1",
+    "soundfile_version": "0.13.1",
+    "scikit_learn_version": "1.7.2",
+    "fastapi_version": "0.115.11"
+  },
+  "random_seeds": {
+    "global_seed": 42,
+    "torch_seed": 42,
+    "numpy_seed": 42,
+    "python_random_seed": 42
+  },
+  "benchmark_datasets": [
+    {
+      "identifier": "ajaykarthick/wavefake-audio",
+      "huggingface_repo": "https://huggingface.co/datasets/ajaykarthick/wavefake-audio",
+      "source_split": "train",
+      "schema_label_key": "real_or_fake",
+      "genuine_labels": ["real", "original", "bonafide", "human", "ljspeech", "0"],
+      "spoofed_labels": ["WF1", "WF2", "WF3", "WF4", "WF5", "WF6", "melgan", "parallel_wavegan", "multi_band_melgan", "hifigan", "waveglow", "full_band_melgan"],
+      "sample_rate_native": 22050,
+      "resampled_target": 16000
+    },
+    {
+      "identifier": "SpeechAntiSpoofingBenchmarks/ASVspoof2019_LA",
+      "huggingface_repo": "https://huggingface.co/datasets/SpeechAntiSpoofingBenchmarks/ASVspoof2019_LA",
+      "source_split": "train / validation / test",
+      "schema_label_key": "label / key",
+      "genuine_labels": ["bonafide", "real", "human", "0"],
+      "spoofed_labels": ["spoof", "fake", "synthetic", "1"],
+      "sample_rate_native": 16000,
+      "resampled_target": 16000
+    },
+    {
+      "identifier": "Gary Stafford Deepfake Dataset",
+      "repository": "https://github.com/garystafford/deepfake-voice-detection-public",
+      "classes": ["Human YouTube Speech", "ElevenLabs Instant Voice Cloning", "Hume AI Empathic Voice", "Speechify AI"]
+    },
+    {
+      "identifier": "WaveFake Benchmark (RUB-SysSec)",
+      "repository": "https://github.com/RUB-SysSec/WaveFake",
+      "classes": ["LJSpeech Human Bonafide", "MelGAN / Parallel WaveGAN Neural Vocoders"]
+    }
+  ],
+  "dataset_manifests": {
+    "clean_raw_manifest": "data/raw/clean_manifest.json",
+    "processed_manifest": "data/processed/processed_manifest.json",
+    "train_manifest": "data/splits/train_manifest.json",
+    "train_split_manifest": "data/splits/train_split_manifest.json",
+    "val_manifest": "data/splits/val_manifest.json",
+    "test_manifest": "data/splits/test_manifest.json",
+    "cross_dataset_manifest": "data/splits/cross_dataset_manifest.json",
+    "leakage_prevention": "Strict GroupKFold partition by speaker_id and parent_file; 0% overlap between train, val, and test splits"
+  },
+  "audio_preprocessing_pipeline": {
+    "target_sample_rate_hz": 16000,
+    "channels": "1 (mono average)",
+    "silence_trimming_top_db": 40.0,
+    "peak_normalization_headroom": 0.95,
+    "target_duration_seconds": 3.0,
+    "target_samples": 48000,
+    "n_fft": 512,
+    "hop_length": 256,
+    "n_mels": 64,
+    "fmin_hz": 20.0,
+    "fmax_hz": 8000.0,
+    "power": 2.0,
+    "log_compression_clamp": 1e-5,
+    "spectrogram_normalization": "per-clip zero-mean unit-variance",
+    "tensor_input_shape": "(batch, 1, 64, time_frames)"
+  },
+  "model_architecture": {
+    "name": "DeepfakeCNNBiLSTMClassifier",
+    "channel_progression": [1, 32, 64, 128, 256],
+    "conv_kernel": 3,
+    "conv_padding": 1,
+    "pooling_blocks_1_to_3": "MaxPool2d(2, 2)",
+    "pooling_block_4": "AdaptiveAvgPool2d((8, None))",
+    "bilstm_hidden_size": 128,
+    "bilstm_layers": 2,
+    "bilstm_bidirectional": true,
+    "temporal_pooling": "torch.mean(lstm_out, dim=1)",
+    "fc_head_dims": [256, 64, 1],
+    "dropout_rate": 0.35,
+    "total_parameters": 3030849,
+    "output_activation": "Raw logits (BCEWithLogitsLoss)",
+    "eval_probability": "torch.sigmoid(logits)"
+  },
+  "checkpoints": {
+    "model_a_pretrained": "models/saved/pretrained_model_a.pt",
+    "model_b_baseline_weights": "models/saved/fine_tuned_model_b_lakhs.pt",
+    "model_b_improved_bundle": "models/saved/fine_tuned_model_b.pt"
+  },
+  "evaluation_protocol": {
+    "held_out_test_manifest": "data/splits/test_manifest.json",
+    "total_test_samples": 13,
+    "metric_resolution_percentage_points": 7.69,
+    "baseline_model_accuracy": 53.85,
+    "baseline_threshold": 0.5,
+    "improved_model_accuracy": 92.31,
+    "improved_calibrated_threshold": 0.5106,
+    "accuracy_delta_percentage_points": 38.46,
+    "relative_accuracy_gain_percent": 71.42,
+    "meets_target_improvement": true
+  }
+}

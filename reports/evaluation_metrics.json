@@ -1,0 +1,105 @@
+{
+  "test_evaluation": {
+    "model_a_pretrained": {
+      "accuracy": 46.15,
+      "balanced_accuracy": 50.0,
+      "accuracy_95ci": [
+        15.38,
+        69.23
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "roc_auc": 0.119,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 100.0,
+      "equal_error_rate": 92.86
+    },
+    "model_b_baseline": {
+      "accuracy": 53.85,
+      "balanced_accuracy": 50.0,
+      "accuracy_95ci": [
+        30.77,
+        84.62
+      ],
+      "precision": 53.85,
+      "recall": 100.0,
+      "f1_score": 70.0,
+      "roc_auc": 0.9762,
+      "false_positive_rate": 100.0,
+      "false_negative_rate": 0.0,
+      "equal_error_rate": 15.48
+    },
+    "model_b_improved": {
+      "accuracy": 92.31,
+      "balanced_accuracy": 91.67,
+      "accuracy_95ci": [
+        76.92,
+        100.0
+      ],
+      "precision": 87.5,
+      "recall": 100.0,
+      "f1_score": 93.33,
+      "roc_auc": 0.9524,
+      "false_positive_rate": 16.67,
+      "false_negative_rate": 0.0,
+      "equal_error_rate": 22.62
+    },
+    "delta": {
+      "baseline_model": "Model B (Colab Baseline)",
+      "improved_model": "Model B (Improved Fine-Tuned)",
+      "accuracy_baseline": 53.85,
+      "accuracy_improved": 92.31,
+      "accuracy_delta_percentage_points": 38.46,
+      "accuracy_relative_change_percent": 71.42,
+      "changed_predictions_count": 5,
+      "precision_delta": 33.65,
+      "recall_delta": 0.0,
+      "f1_score_delta": 23.33,
+      "fpr_reduction": 83.33,
+      "fnr_reduction": 0.0,
+      "meets_target_improvement": true,
+      "resolution_note": "With 13 test samples, minimum detectable accuracy step is 7.69 pp."
+    }
+  },
+  "confusion_matrices": {
+    "model_a_pretrained": {
+      "true_negatives_real": 6,
+      "false_positives_fake": 0,
+      "false_negatives_real": 7,
+      "true_positives_fake": 0
+    },
+    "model_b_baseline": {
+      "true_negatives_real": 0,
+      "false_positives_fake": 6,
+      "false_negatives_real": 0,
+      "true_positives_fake": 7
+    },
+    "model_b_improved": {
+      "true_negatives_real": 5,
+      "false_positives_fake": 1,
+      "false_negatives_real": 0,
+      "true_positives_fake": 7
+    }
+  },
+  "efficiency": {
+    "model_a_pretrained": {
+      "avg_latency_ms": 247.87,
+      "std_latency_ms": 684.61,
+      "throughput_samples_per_sec": 4.0,
+      "parameter_count": 916897
+    },
+    "model_b_baseline": {
+      "avg_latency_ms": 55.17,
+      "std_latency_ms": 10.07,
+      "throughput_samples_per_sec": 18.1,
+      "parameter_count": 3030849
+    },
+    "model_b_improved": {
+      "avg_latency_ms": 58.6,
+      "std_latency_ms": 5.5,
+      "throughput_samples_per_sec": 17.1,
+      "parameter_count": 3030849
+    }
+  }
+}

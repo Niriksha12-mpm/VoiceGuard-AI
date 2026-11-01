@@ -1,0 +1,55 @@
+{
+  "random_seed": 42,
+  "split_policy": "Group-aware partition by parent_file and speaker_id",
+  "leakage_prevention": "Strict zero-overlap between train, val, and test parent recordings",
+  "train_samples": 40,
+  "train_distribution": {
+    "real": 24,
+    "fake": 16
+  },
+  "train_split_samples": 32,
+  "train_split_distribution": {
+    "real": 19,
+    "fake": 13
+  },
+  "val_samples": 8,
+  "val_distribution": {
+    "real": 5,
+    "fake": 3
+  },
+  "test_samples": 13,
+  "test_distribution": {
+    "real": 6,
+    "fake": 7
+  },
+  "cross_dataset_samples": 2,
+  "cross_dataset_distribution": {
+    "real": 0,
+    "fake": 2
+  },
+  "train_parent_recordings": [
+    "garystafford_fake_el0027_part003.flac",
+    "garystafford_fake_el0027_part006.flac",
+    "garystafford_fake_sf0006_part001.flac",
+    "garystafford_real_yt0001_part007.flac",
+    "garystafford_real_yt0006_part053.flac",
+    "garystafford_real_yt0006_part113.flac",
+    "wavefake_fake_lj001_0001_gen.wav",
+    "wavefake_fake_lj001_0002_gen.wav",
+    "wavefake_fake_lj001_0004_gen.wav",
+    "wavefake_fake_lj001_0005_gen.wav",
+    "wavefake_real_lj001_0001.wav",
+    "wavefake_real_lj001_0004.wav",
+    "wavefake_real_lj001_0005.wav"
+  ],
+  "test_parent_recordings": [
+    "garystafford_fake_he0006_part001.flac",
+    "garystafford_real_yt0005_part007.flac",
+    "wavefake_real_lj001_0002.wav"
+  ],
+  "val_parent_recordings": [
+    "wavefake_fake_lj001_0005_gen.wav",
+    "wavefake_real_lj001_0001.wav",
+    "wavefake_real_lj001_0004.wav"
+  ]
+}

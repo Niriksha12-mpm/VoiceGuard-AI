@@ -1,0 +1,32 @@
+system:
+  name: "W2V2-AASIST"
+  slug: "w2v2-aasist"
+  description: >
+    wav2vec 2.0 (XLS-R 300M) self-supervised front-end fine-tuned end-to-end with
+    an AASIST spectro-temporal graph-attention back-end for speech anti-spoofing.
+    The XLS-R features are projected to 128-d, max-pooled, and fed through a
+    RawNet2-style residual encoder and heterogeneous stacking graph-attention
+    layers. Official TakHemlata/SSL_Anti-spoofing LA checkpoint (LA_model.pth),
+    trained on ASVspoof2019 LA with RawBoost augmentation, FP32, deterministic
+    first-64600-sample window (no random crop).
+  code: "https://github.com/TakHemlata/SSL_Anti-spoofing"
+  checkpoint: "https://huggingface.co/SpeechAntiSpoofingBenchmarks/W2V2-AASIST"
+  params_millions: 317.8378
+  paper:
+    arxiv_id: "2202.12233"
+    url: "https://arxiv.org/abs/2202.12233"
+    bibtex: |
+      @inproceedings{tak2022automatic,
+        title={Automatic speaker verification spoofing and deepfake detection using wav2vec 2.0 and data augmentation},
+        author={Tak, Hemlata and Todisco, Massimiliano and Wang, Xin and Jung, Jee-weon and Yamagishi, Junichi and Evans, Nicholas},
+        booktitle={The Speaker and Language Recognition Workshop (Odyssey 2022)},
+        pages={112--119},
+        year={2022}
+      }
+notes: >
+  XLS-R 300M (wav2vec 2.0) front-end + AASIST back-end ("W2V2-AASIST"), the LA
+  variant (LA_model.pth) from TakHemlata/SSL_Anti-spoofing. Architecture is built
+  from the base xlsr2_300m.pt model config, then every weight is overwritten by
+  the fine-tuned checkpoint. Deterministic first-64600-sample window (no random
+  crop), matching the source data_utils_SSL.py::pad used at eval. score = output
+  logit for class 1 (bona fide); higher = more bona fide.

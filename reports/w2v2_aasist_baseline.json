@@ -1,0 +1,532 @@
+{
+  "timestamp": "2026-10-30 19:24:41",
+  "model_architecture": "XLS-R 300M + AASIST (SpeechAntiSpoofingBenchmarks/W2V2-AASIST)",
+  "reference_checkpoint": "SpeechAntiSpoofingBenchmarks/W2V2-AASIST",
+  "parameters": 317837800,
+  "input_sample_rate": 16000,
+  "window_samples": 64600,
+  "validation_samples": 8,
+  "test_samples": 13,
+  "validation_calibrated_threshold_prob_fake": 1.0,
+  "validation_calibrated_threshold_score": -5.6466,
+  "zero_shot_baseline": {
+    "model_name": "XLS-R 300M + AASIST (Zero-Shot Baseline, thr=0.0)",
+    "sample_count": 13,
+    "threshold_used": 0.0,
+    "threshold_type": "score_logit1",
+    "metrics": {
+      "accuracy": 46.15,
+      "balanced_accuracy": 44.05,
+      "accuracy_95ci": [
+        23.08,
+        76.92
+      ],
+      "precision": 50.0,
+      "recall": 71.43,
+      "f1_score": 58.82,
+      "roc_auc": 0.4524,
+      "false_positive_rate": 83.33,
+      "false_negative_rate": 28.57,
+      "equal_error_rate": 39.29
+    },
+    "confusion_matrix": {
+      "true_negatives_real": 1,
+      "false_positives_fake": 5,
+      "false_negatives_real": 2,
+      "true_positives_fake": 5
+    },
+    "class_wise_metrics": {
+      "real": {
+        "precision": 33.33,
+        "recall": 16.67,
+        "f1_score": 22.22,
+        "support": 6
+      },
+      "fake": {
+        "precision": 50.0,
+        "recall": 71.43,
+        "f1_score": 58.82,
+        "support": 7
+      }
+    },
+    "efficiency": {
+      "avg_latency_ms": 10320.39,
+      "std_latency_ms": 2958.74,
+      "throughput_samples_per_sec": 0.1,
+      "parameter_count": 317837800
+    },
+    "dataset_accuracy_breakdown": {
+      "Gary Stafford Deepfake Dataset (YouTube Human)": {
+        "total_samples": 5,
+        "correct_samples": 0,
+        "real_count": 5,
+        "fake_count": 0,
+        "accuracy_percent": 0.0
+      },
+      "Gary Stafford Deepfake Dataset (Hume AI)": {
+        "total_samples": 7,
+        "correct_samples": 5,
+        "real_count": 0,
+        "fake_count": 7,
+        "accuracy_percent": 71.43
+      },
+      "WaveFake (LJSpeech Bonafide)": {
+        "total_samples": 1,
+        "correct_samples": 1,
+        "real_count": 1,
+        "fake_count": 0,
+        "accuracy_percent": 100.0
+      }
+    },
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.1667,
+        0.1667,
+        0.5,
+        0.5,
+        0.8333,
+        0.8333,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0,
+        0.1429,
+        0.1429,
+        0.7143,
+        0.7143,
+        1.0,
+        1.0
+      ],
+      "thresholds": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.997,
+        0.1107,
+        0.0004
+      ]
+    },
+    "per_sample_details": [
+      {
+        "filename": "garystafford_real_yt0005_part007_seg02.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.8486,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 10602.41
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg05.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.7176,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 7844.1
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg01.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -4.9406,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 5411.87
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg01.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.582,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 14491.98
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg00.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.1298,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 12861.92
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg00.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -3.1141,
+        "probability_fake": 0.999,
+        "probability_real": 0.001,
+        "is_correct": false,
+        "latency_ms": 13174.7
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg06.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": 0.6895,
+        "probability_fake": 0.1585,
+        "probability_real": 0.8415,
+        "is_correct": false,
+        "latency_ms": 13874.45
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg03.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.6029,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 11672.79
+      },
+      {
+        "filename": "wavefake_real_lj001_0002_seg00.wav",
+        "parent_file": "wavefake_real_lj001_0002.wav",
+        "dataset_source": "WaveFake (LJSpeech Bonafide)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": 3.459,
+        "probability_fake": 0.0004,
+        "probability_real": 0.9996,
+        "is_correct": true,
+        "latency_ms": 6814.29
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg03.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.1073,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 5586.1
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg04.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": 0.7544,
+        "probability_fake": 0.1107,
+        "probability_real": 0.8893,
+        "is_correct": false,
+        "latency_ms": 9898.06
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg04.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -2.5438,
+        "probability_fake": 0.997,
+        "probability_real": 0.003,
+        "is_correct": false,
+        "latency_ms": 11775.78
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg02.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.5476,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 10156.62
+      }
+    ]
+  },
+  "calibrated_baseline": {
+    "model_name": "XLS-R 300M + AASIST (Calibrated Baseline, thr=1.0000)",
+    "sample_count": 13,
+    "threshold_used": 1.0,
+    "threshold_type": "prob_fake",
+    "metrics": {
+      "accuracy": 46.15,
+      "balanced_accuracy": 48.81,
+      "accuracy_95ci": [
+        23.08,
+        69.23
+      ],
+      "precision": 50.0,
+      "recall": 14.29,
+      "f1_score": 22.22,
+      "roc_auc": 0.4524,
+      "false_positive_rate": 16.67,
+      "false_negative_rate": 85.71,
+      "equal_error_rate": 39.29
+    },
+    "confusion_matrix": {
+      "true_negatives_real": 5,
+      "false_positives_fake": 1,
+      "false_negatives_real": 6,
+      "true_positives_fake": 1
+    },
+    "class_wise_metrics": {
+      "real": {
+        "precision": 45.45,
+        "recall": 83.33,
+        "f1_score": 58.82,
+        "support": 6
+      },
+      "fake": {
+        "precision": 50.0,
+        "recall": 14.29,
+        "f1_score": 22.22,
+        "support": 7
+      }
+    },
+    "efficiency": {
+      "avg_latency_ms": 9929.44,
+      "std_latency_ms": 2820.4,
+      "throughput_samples_per_sec": 0.1,
+      "parameter_count": 317837800
+    },
+    "dataset_accuracy_breakdown": {
+      "Gary Stafford Deepfake Dataset (YouTube Human)": {
+        "total_samples": 5,
+        "correct_samples": 4,
+        "real_count": 5,
+        "fake_count": 0,
+        "accuracy_percent": 80.0
+      },
+      "Gary Stafford Deepfake Dataset (Hume AI)": {
+        "total_samples": 7,
+        "correct_samples": 1,
+        "real_count": 0,
+        "fake_count": 7,
+        "accuracy_percent": 14.29
+      },
+      "WaveFake (LJSpeech Bonafide)": {
+        "total_samples": 1,
+        "correct_samples": 1,
+        "real_count": 1,
+        "fake_count": 0,
+        "accuracy_percent": 100.0
+      }
+    },
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.1667,
+        0.1667,
+        0.5,
+        0.5,
+        0.8333,
+        0.8333,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0,
+        0.1429,
+        0.1429,
+        0.7143,
+        0.7143,
+        1.0,
+        1.0
+      ],
+      "thresholds": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.997,
+        0.1107,
+        0.0004
+      ]
+    },
+    "per_sample_details": [
+      {
+        "filename": "garystafford_real_yt0005_part007_seg02.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.8486,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 6420.34
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg05.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "FAKE",
+        "score_bonafide": -5.7176,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 6886.99
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg01.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": -4.9406,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 11896.24
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg01.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": -5.582,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 13876.88
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg00.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": -5.1298,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 10221.33
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg00.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": -3.1141,
+        "probability_fake": 0.999,
+        "probability_real": 0.001,
+        "is_correct": true,
+        "latency_ms": 16550.93
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg06.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": 0.6895,
+        "probability_fake": 0.1585,
+        "probability_real": 0.8415,
+        "is_correct": false,
+        "latency_ms": 11108.96
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg03.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": -5.6029,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": true,
+        "latency_ms": 7553.57
+      },
+      {
+        "filename": "wavefake_real_lj001_0002_seg00.wav",
+        "parent_file": "wavefake_real_lj001_0002.wav",
+        "dataset_source": "WaveFake (LJSpeech Bonafide)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": 3.459,
+        "probability_fake": 0.0004,
+        "probability_real": 0.9996,
+        "is_correct": true,
+        "latency_ms": 8877.85
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg03.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": -5.1073,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 9301.44
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg04.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": 0.7544,
+        "probability_fake": 0.1107,
+        "probability_real": 0.8893,
+        "is_correct": false,
+        "latency_ms": 8125.74
+      },
+      {
+        "filename": "garystafford_real_yt0005_part007_seg04.wav",
+        "parent_file": "garystafford_real_yt0005_part007.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (YouTube Human)",
+        "ground_truth": "REAL",
+        "predicted_label": "REAL",
+        "score_bonafide": -2.5438,
+        "probability_fake": 0.997,
+        "probability_real": 0.003,
+        "is_correct": true,
+        "latency_ms": 10773.87
+      },
+      {
+        "filename": "garystafford_fake_he0006_part001_seg02.wav",
+        "parent_file": "garystafford_fake_he0006_part001.flac",
+        "dataset_source": "Gary Stafford Deepfake Dataset (Hume AI)",
+        "ground_truth": "FAKE",
+        "predicted_label": "REAL",
+        "score_bonafide": -5.5476,
+        "probability_fake": 1.0,
+        "probability_real": 0.0,
+        "is_correct": false,
+        "latency_ms": 7488.6
+      }
+    ]
+  }
+}
