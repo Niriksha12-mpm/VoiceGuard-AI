@@ -24,10 +24,10 @@ export default function AudioUploader({ onAnalyze, loading, selectedModel, setSe
   const streamRef = useRef(null);
 
   const presets = [
-    { id: 'real_lj', name: 'Real Human (LJSpeech)', type: 'REAL', label: 'Human Bonafide' },
-    { id: 'real_yt', name: 'Real Human (YouTube)', type: 'REAL', label: 'Human Speech' },
-    { id: 'fake_elevenlabs', name: 'ElevenLabs AI Clone', type: 'FAKE', label: 'Neural Clone' },
-    { id: 'fake_wavefake', name: 'WaveFake Vocoder', type: 'FAKE', label: 'Vocoded Impersonation' },
+    { id: 'real_lj', name: 'Real Human (LJSpeech)', type: 'REAL', label: 'Female Bonafide' },
+    { id: 'real_yt', name: 'Real Human (YouTube)', type: 'REAL', label: 'Male Speech' },
+    { id: 'fake_elevenlabs', name: 'ElevenLabs AI (Male)', type: 'FAKE', label: 'Neural Clone' },
+    { id: 'fake_aria', name: 'ElevenLabs AI (Female - Aria)', type: 'FAKE', label: 'Female AI Voice' },
   ];
 
   const channels = [
@@ -71,7 +71,7 @@ export default function AudioUploader({ onAnalyze, loading, selectedModel, setSe
       const res = await fetch(`http://127.0.0.1:8000/api/sample-audio/${preset.id}`);
       if (!res.ok) throw new Error('Preset audio download failed');
       const blob = await res.blob();
-      const ext = preset.id.includes('yt') || preset.id.includes('elevenlabs') ? 'flac' : 'wav';
+      const ext = preset.id.includes('yt') || preset.id.includes('elevenlabs') || preset.id.includes('aria') ? 'flac' : 'wav';
       const presetFile = new File([blob], `${preset.id}_sample.${ext}`, { type: blob.type });
       setFile(presetFile);
       setAudioUrl(URL.createObjectURL(blob));

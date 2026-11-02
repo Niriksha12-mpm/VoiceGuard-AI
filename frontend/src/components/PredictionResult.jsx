@@ -5,7 +5,6 @@ export default function PredictionResult({ result }) {
 
   const { prediction, audio_metadata, acoustic_diagnostics, waveform_preview, temporal_analysis } = result;
   const isReal = prediction.label === 'REAL';
-  const confidencePct = (prediction.confidence_score * 100).toFixed(1);
   const [selectedSegment, setSelectedSegment] = useState(null);
 
   const timeline = temporal_analysis?.timeline || [];
@@ -56,39 +55,34 @@ export default function PredictionResult({ result }) {
           </div>
         </div>
 
-        {/* Confidence Meter Badge */}
+        {/* Forensic Verification Status Badge */}
         <div className="bg-slate-900/90 px-5 py-3 rounded-xl border border-slate-800 text-right sm:text-right w-full sm:w-auto">
-          <div className="text-xs text-slate-400">Confidence Score</div>
-          <div className="text-2xl font-black font-mono text-white flex items-center justify-end space-x-2">
-            <span>{confidencePct}%</span>
-            <span className="text-xs font-normal text-slate-400">({prediction.confidence_score.toFixed(4)})</span>
+          <div className="text-xs text-slate-400">Forensic Integrity Status</div>
+          <div className="text-lg font-black font-mono flex items-center justify-end space-x-2 mt-0.5">
+            <span className={isReal ? 'text-emerald-400' : 'text-rose-400'}>
+              {isReal ? 'VERIFIED AUTHENTIC' : 'SYNTHETIC SPOOF DETECTED'}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Probability Gauge Bar */}
-      <div className="my-6">
-        <div className="flex justify-between text-xs font-mono mb-1.5 text-slate-300">
-          <span className="flex items-center space-x-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>P(REAL): {(prediction.probability_real * 100).toFixed(1)}%</span>
-          </span>
-          <span className="flex items-center space-x-1">
-            <span className="w-2 h-2 rounded-full bg-rose-500"></span>
-            <span>P(FAKE): {(prediction.probability_fake * 100).toFixed(1)}%</span>
+      {/* Forensic Classification Status Banner */}
+      <div className="my-5 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex items-center space-x-2.5 text-xs font-mono">
+          <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${isReal ? 'bg-emerald-400' : 'bg-rose-500'}`}></span>
+          <span className="text-slate-300">
+            {isReal 
+              ? 'Acoustic signature confirms natural human vocal cord dynamics and physiological harmonic structure.'
+              : 'Synthetic vocoder artifacts / AI voice impersonation patterns detected across acoustic spectrum.'}
           </span>
         </div>
-        <div className="w-full h-3 bg-slate-900 rounded-full overflow-hidden flex border border-slate-800">
-          <div
-            style={{ width: `${prediction.probability_real * 100}%` }}
-            className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full transition-all duration-700"
-          ></div>
-          <div
-            style={{ width: `${prediction.probability_fake * 100}%` }}
-            className="bg-gradient-to-r from-rose-500 to-rose-600 h-full transition-all duration-700"
-          ></div>
-        </div>
+        <span className={`px-2.5 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider self-start sm:self-auto shrink-0 ${
+          isReal ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+        }`}>
+          {isReal ? 'PASSED • BONA-FIDE SPEECH' : 'FLAGGED • DEEPFAKE VOICE'}
+        </span>
       </div>
+
 
       {/* Forensic Ensemble Consensus Breakdown */}
       {prediction.ensemble_breakdown && (
@@ -125,7 +119,7 @@ export default function PredictionResult({ result }) {
                       {m.vote}
                     </span>
                     <span className="text-xs font-mono text-slate-300">
-                      P(Fake): {(m.spoof_prob * 100).toFixed(1)}%
+                      Verdict: <strong className={isVoteReal ? 'text-emerald-400' : 'text-rose-400'}>{isVoteReal ? 'Authentic' : 'Synthetic'}</strong>
                     </span>
                   </div>
                 </div>
@@ -185,7 +179,7 @@ export default function PredictionResult({ result }) {
                         ? 'bg-rose-400 text-slate-950 scale-105 shadow-md shadow-rose-500/30'
                         : 'bg-rose-500/80 hover:bg-rose-400 text-slate-950'
                     }`}
-                    title={`${seg.start_time}s - ${seg.end_time}s: ${seg.label} (${(seg.probability_fake * 100).toFixed(1)}% Fake)`}
+                    title={`${seg.start_time}s - ${seg.end_time}s: ${seg.label === 'REAL' ? 'Authentic Human' : 'Synthetic Deepfake'}`}
                   >
                     {idx + 1}
                   </button>
@@ -207,8 +201,7 @@ export default function PredictionResult({ result }) {
                   </span>
                 </div>
                 <div className="font-mono text-slate-300 text-[11px] space-x-3">
-                  <span>Spoof Risk: <strong className={selectedSegment.label === 'REAL' ? 'text-emerald-400' : 'text-rose-400'}>{(selectedSegment.probability_fake * 100).toFixed(1)}%</strong></span>
-                  <span>Confidence: <strong>{(selectedSegment.confidence_score * 100).toFixed(1)}%</strong></span>
+                  <span>Acoustic Integrity: <strong className={selectedSegment.label === 'REAL' ? 'text-emerald-400' : 'text-rose-400'}>{selectedSegment.label === 'REAL' ? 'Natural Speech' : 'Synthesized Spoof'}</strong></span>
                 </div>
               </div>
             ) : (

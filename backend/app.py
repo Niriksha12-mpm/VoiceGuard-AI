@@ -275,7 +275,8 @@ def get_sample_audio(sample_type: str):
         "real_lj": os.path.join(raw_dir, "real", "wavefake_real_lj001_0001.wav"),
         "real_yt": os.path.join(raw_dir, "real", "garystafford_real_yt0001_part007.flac"),
         "fake_elevenlabs": os.path.join(raw_dir, "fake", "garystafford_fake_el0027_part003.flac"),
-        "fake_wavefake": os.path.join(raw_dir, "fake", "wavefake_fake_lj001_0001_gen.wav")
+        "fake_wavefake": os.path.join(raw_dir, "fake", "wavefake_fake_lj001_0001_gen.wav"),
+        "fake_aria": os.path.join(raw_dir, "fake", "zo9999_fake_elevenlabs_aria.flac")
     }
 
     if sample_type not in sample_files:
