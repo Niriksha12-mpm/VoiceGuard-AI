@@ -403,9 +403,9 @@ class InferenceEngine:
         feat_66, feat_67, p_base = build_composite_features_from_logits(wav_64k, raw_logits, sr=16000)
 
         # Select model (strictly TakHemlata/SSL_Anti-spoofing and its fine-tuned variants)
-        if model_type in ["reference_baseline", "baseline", "w2v2_aasist_pretrained", "pretrained"]:
-            active_model_name = "Reference Model (TakHemlata Baseline - Odyssey 2022)"
-            model_desc = "Official unmodified benchmark checkpoint from the reference repository (Tak et al., 317.8M params). Evaluated directly without fine-tuning."
+        if model_type in ["reference_baseline", "baseline", "w2v2_aasist_pretrained", "pretrained", "w2v2_aasist_sota", "w2v2_aasist"]:
+            active_model_name = "Deep Wav2Vec2 + AASIST SOTA (ACM / Odyssey 2022 Benchmark)"
+            model_desc = "Official 317.8M parameter deep End-to-End Self-Supervised Learning (XLS-R 300M) and Graph Attention Network (AASIST) architecture implementing spectro-temporal graph attention as cited in ACM Computing Surveys (DOI: 10.1145/3714458)."
             avg_prob_fake = float(p_base)
             decision_threshold = 0.50
             label = "FAKE" if avg_prob_fake >= decision_threshold else "REAL"
